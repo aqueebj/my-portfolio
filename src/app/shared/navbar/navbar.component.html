@@ -1,0 +1,129 @@
+<nav
+  class="navbar"
+  [class.navbar--scrolled]="isScrolled"
+  [class.navbar--menu-open]="isMobileMenuOpen"
+  role="navigation"
+  aria-label="Main navigation"
+>
+  <div class="navbar__container">
+    <!-- Logo -->
+    <a class="navbar__logo" (click)="scrollToTop()" tabindex="0" aria-label="Scroll to top">
+      <span class="navbar__logo-text">AJ</span>
+      <span class="navbar__logo-dot"></span>
+    </a>
+
+    <!-- Desktop Navigation Links -->
+    <ul class="navbar__links" role="menubar">
+      <li
+        *ngFor="let link of navLinks; let i = index"
+        class="navbar__link-item"
+        role="none"
+      >
+        <a
+          class="navbar__link"
+          [class.navbar__link--active]="activeSection === link.id"
+          (click)="navigateTo(link.id)"
+          role="menuitem"
+          tabindex="0"
+          [attr.aria-current]="activeSection === link.id ? 'true' : null"
+        >
+          <span class="navbar__link-index">0{{ i + 1 }}.</span>
+          {{ link.label }}
+        </a>
+      </li>
+    </ul>
+
+    <!-- Right-side actions -->
+    <div class="navbar__actions">
+      <!-- Theme Toggle -->
+      <button
+        class="navbar__theme-toggle"
+        (click)="toggleTheme()"
+        [attr.aria-label]="isDarkTheme ? 'Switch to light theme' : 'Switch to dark theme'"
+        type="button"
+      >
+        <div class="navbar__theme-icon" [class.navbar__theme-icon--light]="!isDarkTheme">
+          <!-- Sun Icon -->
+          <svg
+            class="navbar__icon navbar__icon--sun"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <circle cx="12" cy="12" r="5" />
+            <line x1="12" y1="1" x2="12" y2="3" />
+            <line x1="12" y1="21" x2="12" y2="23" />
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+            <line x1="1" y1="12" x2="3" y2="12" />
+            <line x1="21" y1="12" x2="23" y2="12" />
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+          </svg>
+          <!-- Moon Icon -->
+          <svg
+            class="navbar__icon navbar__icon--moon"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+          </svg>
+        </div>
+      </button>
+
+      <!-- Hamburger Menu Toggle (Mobile) -->
+      <button
+        class="navbar__hamburger"
+        (click)="toggleMobileMenu()"
+        [class.navbar__hamburger--active]="isMobileMenuOpen"
+        type="button"
+        aria-label="Toggle mobile menu"
+        [attr.aria-expanded]="isMobileMenuOpen"
+      >
+        <span class="navbar__hamburger-line"></span>
+        <span class="navbar__hamburger-line"></span>
+        <span class="navbar__hamburger-line"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu Overlay -->
+  <div
+    class="navbar__mobile-menu"
+    [class.navbar__mobile-menu--open]="isMobileMenuOpen"
+    role="dialog"
+    aria-label="Mobile navigation menu"
+  >
+    <div class="navbar__mobile-backdrop" (click)="toggleMobileMenu()"></div>
+    <div class="navbar__mobile-content">
+      <ul class="navbar__mobile-links" role="menu">
+        <li
+          *ngFor="let link of navLinks; let i = index"
+          class="navbar__mobile-link-item"
+          [style.animation-delay]="(i * 80) + 'ms'"
+          role="none"
+        >
+          <a
+            class="navbar__mobile-link"
+            [class.navbar__mobile-link--active]="activeSection === link.id"
+            (click)="navigateTo(link.id)"
+            role="menuitem"
+            tabindex="0"
+          >
+            <span class="navbar__mobile-link-index">0{{ i + 1 }}.</span>
+            <span class="navbar__mobile-link-label">{{ link.label }}</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

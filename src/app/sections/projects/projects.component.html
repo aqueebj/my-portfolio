@@ -1,0 +1,70 @@
+<section class="projects" id="projects">
+  <div class="projects__header">
+    <h2 class="section-title">Featured <span class="text-gradient">Projects</span></h2>
+    <p class="section-subtitle">Things I've built and explored</p>
+  </div>
+
+  <div class="projects__grid">
+    <div
+      *ngFor="let project of projects; let i = index; let odd = odd"
+      class="projects__card"
+      [class.projects__card--reverse]="odd"
+      (mouseenter)="activeProject = i"
+      (mouseleave)="activeProject = -1"
+    >
+      <div class="projects__card-visual">
+        <div class="projects__card-icon">
+          <svg *ngIf="i === 0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6z"/>
+            <path d="M3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25z"/>
+            <path d="M13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6z"/>
+            <path d="M13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25a2.25 2.25 0 01-2.25-2.25v-2.25z"/>
+          </svg>
+          <svg *ngIf="i === 1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941"/>
+          </svg>
+          <svg *ngIf="i === 2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418"/>
+          </svg>
+        </div>
+        <div class="projects__card-number">0{{ i + 1 }}</div>
+      </div>
+
+      <div class="projects__card-content">
+        <div class="projects__card-meta">
+          <span class="projects__card-category">{{ project.category }}</span>
+          <span class="projects__card-date">{{ project.date }}</span>
+        </div>
+
+        <h3 class="projects__card-title">{{ project.name }}</h3>
+
+        <p class="projects__card-description">{{ project.description }}</p>
+
+        <div class="projects__card-tech">
+          <span *ngFor="let tech of project.tech" class="projects__card-tag">
+            {{ tech }}
+          </span>
+        </div>
+
+        <div class="projects__card-links" *ngIf="project.links.live || project.links.code">
+          <a *ngIf="project.links.live" [href]="project.links.live" target="_blank" class="projects__card-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+              <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
+              <polyline points="15 3 21 3 21 9"/>
+              <line x1="10" y1="14" x2="21" y2="3"/>
+            </svg>
+            Live
+          </a>
+          <a *ngIf="project.links.code" [href]="project.links.code" target="_blank" class="projects__card-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+              <path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/>
+            </svg>
+            Code
+          </a>
+        </div>
+      </div>
+
+      <div class="projects__card-glow"></div>
+    </div>
+  </div>
+</section>

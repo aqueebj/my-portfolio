@@ -1,0 +1,268 @@
+// ─── Design Tokens ─────────────────────────────────────────
+$bg-dark: #0a0a0f;
+$card-bg: #12121a;
+$border-color: #1e1e2e;
+$accent-cyan: #00d4ff;
+$accent-amber: #ff9f43;
+$text-primary: #e4e4e7;
+$text-secondary: #a1a1aa;
+$radius-card: 16px;
+$radius-btn: 8px;
+
+.skills {
+  padding: 6rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  &__header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  // ─── Radar Chart Card ──────────────────────────────────────
+  &__chart {
+    position: sticky;
+    top: 6rem;
+  }
+
+  &__chart-card {
+    background: rgba(18, 18, 26, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid $border-color;
+    border-radius: $radius-card;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: -1px;
+      left: 20%;
+      right: 20%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, $accent-cyan, transparent);
+    }
+
+    canvas {
+      width: 100% !important;
+      height: auto !important;
+    }
+  }
+
+  // ─── Category Tabs ─────────────────────────────────────────
+  &__tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+  }
+
+  &__tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid $border-color;
+    border-radius: 24px;
+    background: transparent;
+    color: $text-secondary;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+
+    &-icon {
+      font-size: 0.9rem;
+    }
+
+    &:hover {
+      border-color: rgba($accent-cyan, 0.4);
+      color: $text-primary;
+      background: rgba($accent-cyan, 0.05);
+    }
+
+    &.active {
+      border-color: $accent-cyan;
+      color: $accent-cyan;
+      background: rgba($accent-cyan, 0.1);
+      box-shadow: 0 0 16px rgba($accent-cyan, 0.15);
+    }
+  }
+
+  // ─── Skill Progress Bars ───────────────────────────────────
+  &__tags {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  &__tag {
+    animation: slideInRight 0.4s ease forwards;
+    opacity: 0;
+
+    &-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+
+    &-name {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: $text-primary;
+    }
+
+    &-level {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: $accent-cyan;
+    }
+
+    &-bar {
+      width: 100%;
+      height: 6px;
+      background: rgba($border-color, 0.6);
+      border-radius: 3px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    &-fill {
+      height: 100%;
+      border-radius: 3px;
+      position: relative;
+      transition: width 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+      // High proficiency — cyan gradient
+      &.high {
+        background: linear-gradient(90deg, $accent-cyan, lighten($accent-cyan, 15%));
+        box-shadow: 0 0 10px rgba($accent-cyan, 0.4);
+      }
+
+      // Medium proficiency — amber gradient
+      &.medium {
+        background: linear-gradient(90deg, $accent-amber, lighten($accent-amber, 10%));
+        box-shadow: 0 0 10px rgba($accent-amber, 0.3);
+      }
+
+      // Lower proficiency — muted gradient
+      &.low {
+        background: linear-gradient(90deg, #6366f1, #818cf8);
+        box-shadow: 0 0 10px rgba(99, 102, 241, 0.3);
+      }
+
+      // Animated shimmer on the bar
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          90deg,
+          transparent 0%,
+          rgba(255, 255, 255, 0.15) 50%,
+          transparent 100%
+        );
+        animation: shimmer 2s ease-in-out infinite;
+      }
+    }
+  }
+}
+
+// ─── Shared Section Title Styles ───────────────────────────
+.section-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: $text-primary;
+  margin: 0 0 0.75rem;
+  letter-spacing: -0.02em;
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, $accent-cyan, $accent-amber);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.section-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.1rem;
+  color: $text-secondary;
+  margin: 0;
+}
+
+// ─── Keyframes ────────────────────────────────────────────
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(200%);
+  }
+}
+
+// ─── Responsive ──────────────────────────────────────────
+@media (max-width: 900px) {
+  .skills {
+    &__content {
+      grid-template-columns: 1fr;
+    }
+
+    &__chart {
+      position: static;
+    }
+
+    &__chart-card {
+      max-width: 480px;
+      margin: 0 auto;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .skills {
+    padding: 4rem 1rem;
+
+    &__tabs {
+      gap: 0.35rem;
+    }
+
+    &__tab {
+      padding: 0.4rem 0.75rem;
+      font-size: 0.72rem;
+    }
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+  }
+}

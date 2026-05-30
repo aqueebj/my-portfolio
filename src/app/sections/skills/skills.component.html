@@ -1,0 +1,45 @@
+<section class="skills" id="skills">
+  <div class="skills__header">
+    <h2 class="section-title">Skills & <span class="text-gradient">Expertise</span></h2>
+    <p class="section-subtitle">Technologies I work with daily</p>
+  </div>
+
+  <div class="skills__content">
+    <div class="skills__chart">
+      <div class="skills__chart-card">
+        <canvas #skillsChart></canvas>
+      </div>
+    </div>
+
+    <div class="skills__categories">
+      <div class="skills__tabs">
+        <button *ngFor="let cat of categories; let i = index"
+                [class.active]="activeCategory === i"
+                (click)="activeCategory = i"
+                class="skills__tab">
+          <span class="skills__tab-icon">{{ cat.icon }}</span>
+          {{ cat.name }}
+        </button>
+      </div>
+
+      <div class="skills__tags">
+        <div *ngFor="let skill of categories[activeCategory].skills; let j = index"
+             class="skills__tag"
+             [style.animation-delay.ms]="j * 80">
+          <div class="skills__tag-header">
+            <span class="skills__tag-name">{{ skill.name }}</span>
+            <span class="skills__tag-level">{{ skill.level }}%</span>
+          </div>
+          <div class="skills__tag-bar">
+            <div class="skills__tag-fill"
+                 [style.width.%]="skill.level"
+                 [class.high]="skill.level >= 85"
+                 [class.medium]="skill.level >= 70 && skill.level < 85"
+                 [class.low]="skill.level < 70">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

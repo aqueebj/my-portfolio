@@ -1,0 +1,32 @@
+<section class="map-section" id="map">
+  <div class="map-section__header">
+    <h2 class="section-title">Where I <span class="text-gradient">Live & Build</span></h2>
+    <p class="section-subtitle">Navigate between my worlds</p>
+  </div>
+  
+  <div class="map-section__container">
+    <div class="map-section__controls">
+      <button [class.active]="activeLocation === 'home'" 
+              (click)="flyToLocation('home')" 
+              class="map-section__btn">
+        <span class="map-section__btn-icon">🏠</span>
+        I Stay Here
+      </button>
+      <button [class.active]="activeLocation === 'work'" 
+              (click)="flyToLocation('work')" 
+              class="map-section__btn">
+        <span class="map-section__btn-icon">🏢</span>
+        I Build Here
+      </button>
+    </div>
+    
+    <div class="map-section__map" id="portfolio-map"></div>
+    
+    <div class="map-section__info">
+      <div class="map-section__info-card">
+        <h3>{{ activeLocation === 'home' ? locations.home.label : locations.work.label }}</h3>
+        <p>{{ activeLocation === 'home' ? locations.home.description : locations.work.description }}</p>
+      </div>
+    </div>
+  </div>
+</section>

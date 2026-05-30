@@ -1,0 +1,64 @@
+<section id="experience" class="experience-section">
+  <div class="container">
+    <!-- Section Header -->
+    <div class="section-header">
+      <span class="section-label">My Path</span>
+      <h2 class="section-title">
+        Experience &amp; <span class="text-gradient">Education</span>
+      </h2>
+      <p class="section-subtitle">
+        A timeline of the milestones that shaped my career in software engineering.
+      </p>
+    </div>
+
+    <!-- Timeline -->
+    <div class="timeline">
+      <!-- Animated center line -->
+      <div class="timeline-line"></div>
+
+      @for (entry of timeline; track entry.period; let i = $index) {
+        <div
+          class="timeline-item"
+          [class.timeline-left]="i % 2 === 0"
+          [class.timeline-right]="i % 2 !== 0"
+          [style.animation-delay]="i * 0.2 + 's'"
+        >
+          <!-- Dot on the line -->
+          <div class="timeline-dot">
+            <span class="dot-icon">
+              @if (entry.type === 'work') {
+                💼
+              } @else {
+                🎓
+              }
+            </span>
+          </div>
+
+          <!-- Card -->
+          <div class="timeline-card">
+            <span class="period-badge">{{ entry.period }}</span>
+            <h3 class="entry-title">{{ entry.title }}</h3>
+            <p class="entry-org">
+              <span class="org-icon">
+                @if (entry.type === 'work') {
+                  🏢
+                } @else {
+                  🏛️
+                }
+              </span>
+              {{ entry.organization }}
+            </p>
+            <p class="entry-description">{{ entry.description }}</p>
+            @if (entry.skills.length > 0) {
+              <div class="skill-tags">
+                @for (skill of entry.skills; track skill) {
+                  <span class="skill-tag">{{ skill }}</span>
+                }
+              </div>
+            }
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

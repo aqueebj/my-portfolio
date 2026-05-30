@@ -1,0 +1,272 @@
+// ==========================================================================
+// Experience & Education – Vertical Timeline
+// ==========================================================================
+
+.experience-section {
+  padding: var(--section-padding);
+  position: relative;
+  overflow: hidden;
+}
+
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: var(--container-padding);
+}
+
+// ── Timeline wrapper ──────────────────────────────────────────────────────
+.timeline {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: var(--spacing-lg) 0;
+}
+
+// ── Animated center line ──────────────────────────────────────────────────
+.timeline-line {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    var(--accent-cyan) 10%,
+    var(--accent-purple) 90%,
+    transparent 100%
+  );
+  animation: drawLineVertical 1.5s ease-out forwards;
+
+  // Glow effect on line
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 100%;
+    background: linear-gradient(
+      180deg,
+      transparent 0%,
+      rgba(var(--accent-cyan-rgb), 0.2) 10%,
+      rgba(var(--accent-purple-rgb), 0.2) 90%,
+      transparent 100%
+    );
+    filter: blur(4px);
+  }
+}
+
+// ── Timeline item ─────────────────────────────────────────────────────────
+.timeline-item {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: var(--spacing-xl);
+  width: 100%;
+  animation: fadeInUp 0.6s ease both;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// ── Alternating layout (desktop) ──────────────────────────────────────────
+.timeline-left {
+  justify-content: flex-start;
+  padding-right: calc(50% + 40px);
+
+  .timeline-card {
+    text-align: right;
+  }
+
+  .skill-tags {
+    justify-content: flex-end;
+  }
+
+  .entry-org {
+    justify-content: flex-end;
+  }
+}
+
+.timeline-right {
+  justify-content: flex-end;
+  padding-left: calc(50% + 40px);
+
+  .timeline-card {
+    text-align: left;
+  }
+}
+
+// ── Timeline dot ──────────────────────────────────────────────────────────
+.timeline-dot {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--bg-secondary);
+  border: 2px solid var(--accent-cyan);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  box-shadow: 0 0 16px rgba(var(--accent-cyan-rgb), 0.3);
+  transition:
+    box-shadow var(--transition-base),
+    transform var(--transition-base);
+
+  .dot-icon {
+    font-size: 1.25rem;
+    line-height: 1;
+  }
+
+  .timeline-item:hover & {
+    transform: translateX(-50%) scale(1.15);
+    box-shadow: 0 0 28px rgba(var(--accent-cyan-rgb), 0.5);
+  }
+}
+
+// ── Timeline card ─────────────────────────────────────────────────────────
+.timeline-card {
+  position: relative;
+  background: var(--bg-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  transition:
+    transform var(--transition-base),
+    border-color var(--transition-base),
+    box-shadow var(--transition-base);
+  width: 100%;
+
+  &:hover {
+    transform: translateY(-4px);
+    border-color: var(--border-glow);
+    box-shadow:
+      var(--shadow-lg),
+      0 0 24px rgba(var(--accent-cyan-rgb), 0.06);
+  }
+}
+
+// ── Period badge ──────────────────────────────────────────────────────────
+.period-badge {
+  display: inline-block;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--accent-cyan);
+  background: rgba(var(--accent-cyan-rgb), 0.1);
+  border: 1px solid rgba(var(--accent-cyan-rgb), 0.2);
+  border-radius: var(--radius-full);
+  padding: 0.25rem 0.85rem;
+  margin-bottom: var(--spacing-sm);
+}
+
+// ── Entry title ───────────────────────────────────────────────────────────
+.entry-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 0.35rem;
+  letter-spacing: -0.01em;
+}
+
+// ── Organization ──────────────────────────────────────────────────────────
+.entry-org {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+  color: var(--accent-amber);
+  font-weight: 500;
+  margin-bottom: var(--spacing-sm);
+
+  .org-icon {
+    font-size: 0.85rem;
+  }
+}
+
+// ── Description ───────────────────────────────────────────────────────────
+.entry-description {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-sm);
+}
+
+// ── Skill tags ────────────────────────────────────────────────────────────
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.skill-tag {
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  background: rgba(var(--accent-purple-rgb), 0.12);
+  border: 1px solid rgba(var(--accent-purple-rgb), 0.2);
+  border-radius: var(--radius-full);
+  padding: 0.2rem 0.65rem;
+  letter-spacing: 0.02em;
+  transition: background var(--transition-fast), border-color var(--transition-fast);
+
+  &:hover {
+    background: rgba(var(--accent-purple-rgb), 0.25);
+    border-color: rgba(var(--accent-purple-rgb), 0.4);
+  }
+}
+
+// ==========================================================================
+// Mobile – single-column layout
+// ==========================================================================
+@media (max-width: 768px) {
+  .timeline-line {
+    left: 24px;
+    transform: none;
+  }
+
+  .timeline-item {
+    padding-right: 0 !important;
+    padding-left: 72px !important;
+    justify-content: flex-start !important;
+  }
+
+  .timeline-left .timeline-card,
+  .timeline-right .timeline-card {
+    text-align: left;
+  }
+
+  .timeline-left .skill-tags,
+  .timeline-right .skill-tags {
+    justify-content: flex-start;
+  }
+
+  .timeline-left .entry-org,
+  .timeline-right .entry-org {
+    justify-content: flex-start;
+  }
+
+  .timeline-dot {
+    left: 24px;
+    width: 40px;
+    height: 40px;
+
+    .dot-icon {
+      font-size: 1.05rem;
+    }
+
+    .timeline-item:hover & {
+      transform: translateX(-50%) scale(1.1);
+    }
+  }
+}

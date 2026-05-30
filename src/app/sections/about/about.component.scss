@@ -1,0 +1,140 @@
+// ==========================================================================
+// About Section
+// ==========================================================================
+
+.about-section {
+  padding: var(--section-padding);
+  position: relative;
+  overflow: hidden;
+
+  // Subtle radial glow behind the section
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 800px;
+    height: 800px;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(
+      circle,
+      rgba(var(--accent-cyan-rgb), 0.04) 0%,
+      transparent 70%
+    );
+    pointer-events: none;
+  }
+}
+
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: var(--container-padding);
+  position: relative;
+  z-index: 1;
+}
+
+// ── Cards Grid ────────────────────────────────────────────────────────────
+.about-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-lg);
+
+  @media (max-width: 992px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+// ── Individual Card ───────────────────────────────────────────────────────
+.about-card {
+  position: relative;
+  background: var(--bg-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl) var(--spacing-lg);
+  transition:
+    transform var(--transition-base),
+    border-color var(--transition-base),
+    box-shadow var(--transition-base);
+  animation: fadeInUp 0.6s ease both;
+  overflow: hidden;
+
+  // Decorative top-edge glow
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--accent-gradient);
+    opacity: 0;
+    transition: opacity var(--transition-base);
+  }
+
+  &:hover {
+    transform: translateY(-8px);
+    border-color: var(--border-glow);
+    box-shadow:
+      var(--shadow-lg),
+      0 0 30px rgba(var(--accent-cyan-rgb), 0.08);
+
+    &::before {
+      opacity: 1;
+    }
+  }
+}
+
+// ── Card Icon ─────────────────────────────────────────────────────────────
+.card-icon {
+  font-size: 2.5rem;
+  margin-bottom: var(--spacing-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  background: rgba(var(--accent-cyan-rgb), 0.08);
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(var(--accent-cyan-rgb), 0.12);
+}
+
+// ── Card Title ────────────────────────────────────────────────────────────
+.card-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--spacing-sm);
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+// ── Card Divider ──────────────────────────────────────────────────────────
+.card-divider {
+  width: 40px;
+  height: 2px;
+  background: var(--accent-gradient);
+  border-radius: 1px;
+  margin-bottom: var(--spacing-md);
+  transition: width var(--transition-base);
+
+  .about-card:hover & {
+    width: 64px;
+  }
+}
+
+// ── Card Description ──────────────────────────────────────────────────────
+.card-description {
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: var(--text-secondary);
+  margin: 0;
+}

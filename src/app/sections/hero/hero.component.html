@@ -1,0 +1,124 @@
+<section class="hero" id="hero">
+  <!-- CSS-only dot grid background -->
+  <div class="hero__particles" aria-hidden="true"></div>
+
+  <!-- Radial ambient glow -->
+  <div class="hero__ambient-glow" aria-hidden="true"></div>
+
+  <div class="hero__content">
+    <!-- ─── Left Column ─────────────────────────────────────── -->
+    <div class="hero__left">
+      <div class="hero__greeting">
+        <span class="hero__wave" aria-hidden="true">👋</span>
+        <span class="hero__hello">Hello, I'm</span>
+      </div>
+
+      <h1 class="hero__name">
+        Aqueeb <span class="hero__name--accent">Jawed</span>
+      </h1>
+
+      <div class="hero__title">
+        <span class="hero__title-static">I'm a </span>
+        <span class="hero__title-dynamic">
+          {{ displayText }}<span class="hero__cursor" [class.hero__cursor--paused]="!isTyping">|</span>
+        </span>
+      </div>
+
+      <p class="hero__bio">
+        Passionate Software Development Engineer specializing in Angular web applications,
+        interactive maps with Leaflet, AI-powered chatbots, and data visualization.
+        Building enterprise-grade solutions at Cropin Technology.
+      </p>
+
+      <div class="hero__cta">
+        <a
+          href="assets/docs/resume.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hero__btn hero__btn--primary"
+        >
+          <svg
+            class="hero__btn-icon"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+            <polyline points="7 10 12 15 17 10" />
+            <line x1="12" y1="15" x2="12" y2="3" />
+          </svg>
+          Get My Resume
+        </a>
+
+        <button
+          class="hero__btn hero__btn--secondary"
+          (click)="scrollToSection('projects')"
+        >
+          <svg
+            class="hero__btn-icon"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <line x1="5" y1="12" x2="19" y2="12" />
+            <polyline points="12 5 19 12 12 19" />
+          </svg>
+          View My Work
+        </button>
+      </div>
+    </div>
+
+    <!-- ─── Right Column ────────────────────────────────────── -->
+    <div class="hero__right">
+      <div class="hero__image-wrapper">
+        <div class="hero__image-glow" aria-hidden="true"></div>
+
+        <div class="hero__image-border">
+          <img
+            src="assets/images/profile.png"
+            alt="Aqueeb Jawed — Software Development Engineer"
+            class="hero__image"
+            loading="eager"
+          />
+        </div>
+
+        <!-- Floating decorative code elements -->
+        <div class="hero__float hero__float--1" aria-hidden="true">
+          <span>&lt;/&gt;</span>
+        </div>
+        <div class="hero__float hero__float--2" aria-hidden="true">
+          <span>&#123; &#125;</span>
+        </div>
+        <div class="hero__float hero__float--3" aria-hidden="true">
+          <span>ng</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── Scroll Indicator ────────────────────────────────── -->
+  <div
+    class="hero__scroll-indicator"
+    (click)="scrollToSection('about')"
+    role="button"
+    tabindex="0"
+    aria-label="Scroll down to About section"
+    (keydown.enter)="scrollToSection('about')"
+    (keydown.space)="scrollToSection('about')"
+  >
+    <div class="hero__scroll-mouse">
+      <div class="hero__scroll-wheel"></div>
+    </div>
+    <span class="hero__scroll-text">Scroll Down</span>
+  </div>
+</section>
