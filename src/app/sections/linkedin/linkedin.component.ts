@@ -19,10 +19,10 @@ import { Subscription } from 'rxjs';
              data-size="large" 
              [attr.data-theme]="currentTheme"
              data-type="HORIZONTAL" 
-             data-vanity="aqueeb-jawed-32b2ab131" 
+             data-vanity="aqueebj" 
              data-version="v1">
           <a class="badge-base__link LI-simple-link" 
-             href="https://in.linkedin.com/in/aqueeb-jawed-32b2ab131?trk=profile-badge">
+             href="https://in.linkedin.com/in/aqueebj?trk=profile-badge">
             Aqueeb Jawed
           </a>
         </div>
@@ -72,7 +72,13 @@ export class LinkedinComponent implements OnInit, OnDestroy {
       this.themeSub = this.themeService.currentTheme$.subscribe(theme => {
         this.currentTheme = theme;
       });
-      // The script is loaded in index.html
+
+      // Dynamically load the LinkedIn script for SPA
+      const script = document.createElement('script');
+      script.src = 'https://platform.linkedin.com/badges/js/profile.js';
+      script.async = true;
+      script.defer = true;
+      document.body.appendChild(script);
     }
   }
 

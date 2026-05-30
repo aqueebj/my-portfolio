@@ -15,6 +15,7 @@ export class HeroComponent implements OnInit, OnDestroy {
   private readonly scrollService = inject(ScrollService);
 
   readonly titles: string[] = [
+    'Senior Software Engineer',
     'Angular Developer',
     'Maps Engineer',
     'AI Chatbot Builder',

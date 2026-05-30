@@ -3,25 +3,25 @@
   --bg-primary: #0a0a0f;
   --bg-secondary: #12121a;
   --bg-card: #1a1a2e;
-  --bg-glass: rgba(18, 18, 26, 0.8);
+  --bg-glass: rgba(18, 18, 26, 0.5);
   --border-color: #1e1e2e;
-  --border-glow: rgba(0, 212, 255, 0.3);
+  --border-glow: rgba(16, 185, 129, 0.3);
   
   --text-primary: #e4e4e7;
   --text-secondary: #a1a1aa;
   --text-muted: #71717a;
   
-  --accent-cyan: #00d4ff;
-  --accent-cyan-rgb: 0, 212, 255;
-  --accent-amber: #ff9f43;
-  --accent-amber-rgb: 255, 159, 67;
-  --accent-gradient: linear-gradient(135deg, #00d4ff, #0ea5e9, #6366f1);
-  --accent-gradient-warm: linear-gradient(135deg, #ff9f43, #f97316, #ef4444);
+  --accent-cyan: #10b981;
+  --accent-cyan-rgb: 16, 185, 129;
+  --accent-amber: #34d399;
+  --accent-amber-rgb: 52, 211, 153;
+  --accent-gradient: linear-gradient(135deg, #34d399, #10b981, #059669);
+  --accent-gradient-warm: linear-gradient(135deg, #a7f3d0, #34d399, #10b981);
   
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
   --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
   --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
-  --shadow-glow: 0 0 20px rgba(0, 212, 255, 0.15);
+  --shadow-glow: 0 0 20px rgba(16, 185, 129, 0.15);
   
   --radius-sm: 8px;
   --radius-md: 12px;
@@ -38,7 +38,7 @@
   --spacing-3xl: 6rem;
   
   --nav-height: 70px;
-  --section-padding: 6rem 0;
+  --section-padding: 6rem 1.5rem;
   
   --transition-fast: 0.2s ease;
   --transition-base: 0.3s ease;
@@ -50,14 +50,14 @@
   --bg-primary: #f8f9fa;
   --bg-secondary: #ffffff;
   --bg-card: #ffffff;
-  --bg-glass: rgba(255, 255, 255, 0.85);
+  --bg-glass: rgba(255, 255, 255, 0.6);
   --border-color: #e2e8f0;
-  --border-glow: rgba(0, 212, 255, 0.2);
+  --border-glow: rgba(16, 185, 129, 0.2);
   --text-primary: #1a1a2e;
   --text-secondary: #4a5568;
   --text-muted: #718096;
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
   --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.1);
   --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.12);
-  --shadow-glow: 0 0 20px rgba(0, 212, 255, 0.1);
+  --shadow-glow: 0 0 20px rgba(16, 185, 129, 0.1);
 }

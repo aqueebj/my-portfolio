@@ -51,22 +51,31 @@
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1000;
+  z-index: 9999;
   height: var(--nav-height, 70px);
-  transition:
-    background-color 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-    backdrop-filter 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-    box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-    border-color 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   animation: fadeInDown 0.6s ease-out;
-  border-bottom: 1px solid transparent;
+  // Background and glassmorphism applied to pseudo-element to prevent
+  // backdrop-filter from creating a containing block that breaks fixed mobile menu
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-color: transparent;
+    border-bottom: 1px solid transparent;
+    transition:
+      background-color 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      backdrop-filter 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      border-bottom-color 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
 
   // ── Scrolled state: glassmorphism ──
-  &--scrolled {
+  &--scrolled::before {
     background-color: var(--bg-glass);
-    backdrop-filter: blur(16px) saturate(1.8);
-    -webkit-backdrop-filter: blur(16px) saturate(1.8);
-    border-bottom-color: var(--border-subtle);
+    backdrop-filter: blur(24px) saturate(2.0);
+    -webkit-backdrop-filter: blur(24px) saturate(2.0);
+    border-bottom-color: var(--border-color);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
   }
 
@@ -184,7 +193,7 @@
 
     &:hover {
       color: var(--text-primary);
-      background-color: rgba(255, 255, 255, 0.04);
+      background-color: rgba(var(--accent-cyan-rgb, 16, 185, 129), 0.1);
     }
 
     &--active {
@@ -383,9 +392,10 @@
   &__mobile-backdrop {
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
+    background-color: var(--bg-primary);
+    opacity: 0.95;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
   }
 
   &__mobile-content {
@@ -436,7 +446,7 @@
 
     &:hover {
       color: var(--text-primary);
-      background-color: rgba(255, 255, 255, 0.05);
+      background-color: rgba(var(--accent-cyan-rgb, 16, 185, 129), 0.1);
       transform: scale(1.05);
     }
 

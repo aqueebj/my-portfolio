@@ -103,7 +103,7 @@ export class ContactComponent implements OnInit {
     { label: 'Email', href: 'mailto:aqueebj@gmail.com' },
     { label: 'LinkedIn', href: 'https://www.linkedin.com/in/aqueeb-jawed-32b2ab131' },
     { label: 'GitHub', href: 'https://github.com/aqueebj' },
-    { label: 'Resume', href: 'assets/docs/resume.pdf' }
+    { label: 'Resume', href: 'assets/docs/resume.png' }
   ];
 
   ngOnInit() {}

@@ -75,7 +75,7 @@ export interface MapLocation {
 
 export const PROFILE_DATA: Profile = {
   name: 'Aqueeb Jawed',
-  title: 'Software Development Engineer',
+  title: 'Senior Software Engineer',
   subtitle: 'Angular · Maps · AI Chatbots',
   email: 'aqueebj@gmail.com',
   phone: '+91-8338996578',
@@ -84,28 +84,37 @@ export const PROFILE_DATA: Profile = {
   linkedinVanity: 'aqueebj',
   location: 'Bangalore, India',
   hometown: 'Keonjhar, Odisha, India',
-  bio: 'Passionate Software Development Engineer specializing in Angular web applications, interactive maps with Leaflet, AI-powered chatbots, and data visualization. Building enterprise-grade solutions at Cropin, driving agricultural technology with intelligent web platforms.',
+  bio: 'Passionate Senior Software Engineer specializing in Angular web applications, interactive maps with Leaflet, AI-powered chatbots, and data visualization. Building enterprise-grade solutions at Cropin, driving agricultural technology with intelligent web platforms.',
   resumeUrl: 'assets/docs/resume.pdf',
 };
 
 export const EXPERIENCE_DATA: Experience[] = [
   {
-    role: 'Software Development Engineer 2',
+    role: 'Senior Software Engineer',
     company: 'Cropin Technology',
     location: 'Bangalore, India',
-    period: '2023 – Present',
+    period: 'Apr 2026 – Present',
     description:
       'Leading development of enterprise Angular applications for agricultural intelligence. Building interactive GIS-based dashboards with Leaflet maps, developing AI-powered chatbots using Google ADK, and creating data visualization solutions with Chart.js for farm analytics.',
     skills: ['Angular', 'TypeScript', 'Leaflet', 'Chart.js', 'Firebase', 'Angular Material', 'Google ADK'],
   },
   {
-    role: 'Software Development Engineer 1',
+    role: 'Software Development Engineer 2',
     company: 'Cropin Technology',
     location: 'Bangalore, India',
-    period: '2022 – 2023',
+    period: 'Apr 2024 – Mar 2026',
     description:
       'Developed and maintained Angular-based web applications for crop monitoring and farm management. Implemented responsive UI components with Angular Material, integrated REST APIs, and built GeoJSON-based map visualizations.',
     skills: ['Angular', 'JavaScript', 'TypeScript', 'Angular Material', 'REST APIs', 'GeoJSON'],
+  },
+  {
+    role: 'Software Development Engineer 1',
+    company: 'Cropin Technology',
+    location: 'Bangalore, India',
+    period: 'Jul 2022 – Mar 2024',
+    description:
+      'Contributed to the development of agricultural technology solutions. Assisted in building UI components, writing unit tests, and debugging Angular applications to ensure robust performance.',
+    skills: ['Angular', 'JavaScript', 'HTML/CSS', 'Debugging', 'Git'],
   },
 ];
 

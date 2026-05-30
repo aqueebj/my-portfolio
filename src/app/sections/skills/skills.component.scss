@@ -1,17 +1,6 @@
-// ─── Design Tokens ─────────────────────────────────────────
-$bg-dark: #0a0a0f;
-$card-bg: #12121a;
-$border-color: #1e1e2e;
-$accent-cyan: #00d4ff;
-$accent-amber: #ff9f43;
-$text-primary: #e4e4e7;
-$text-secondary: #a1a1aa;
-$radius-card: 16px;
-$radius-btn: 8px;
-
 .skills {
-  padding: 6rem 2rem;
-  max-width: 1200px;
+  padding: var(--section-padding);
+  max-width: var(--container-max, 1200px);
   margin: 0 auto;
 
   &__header {
@@ -33,11 +22,11 @@ $radius-btn: 8px;
   }
 
   &__chart-card {
-    background: rgba(18, 18, 26, 0.8);
+    background: var(--bg-glass);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border: 1px solid $border-color;
-    border-radius: $radius-card;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
     padding: 2rem;
     position: relative;
     overflow: hidden;
@@ -49,7 +38,7 @@ $radius-btn: 8px;
       left: 20%;
       right: 20%;
       height: 1px;
-      background: linear-gradient(90deg, transparent, $accent-cyan, transparent);
+      background: linear-gradient(90deg, transparent, var(--accent-cyan), transparent);
     }
 
     canvas {
@@ -71,10 +60,10 @@ $radius-btn: 8px;
     align-items: center;
     gap: 0.4rem;
     padding: 0.5rem 1rem;
-    border: 1px solid $border-color;
+    border: 1px solid var(--border-color);
     border-radius: 24px;
     background: transparent;
-    color: $text-secondary;
+    color: var(--text-secondary);
     font-family: 'Inter', sans-serif;
     font-size: 0.8rem;
     font-weight: 500;
@@ -87,16 +76,16 @@ $radius-btn: 8px;
     }
 
     &:hover {
-      border-color: rgba($accent-cyan, 0.4);
-      color: $text-primary;
-      background: rgba($accent-cyan, 0.05);
+      border-color: rgba(var(--accent-cyan-rgb, 16, 185, 129), 0.4);
+      color: var(--text-primary);
+      background: rgba(var(--accent-cyan-rgb, 16, 185, 129), 0.05);
     }
 
     &.active {
-      border-color: $accent-cyan;
-      color: $accent-cyan;
-      background: rgba($accent-cyan, 0.1);
-      box-shadow: 0 0 16px rgba($accent-cyan, 0.15);
+      border-color: var(--accent-cyan);
+      color: var(--accent-cyan);
+      background: rgba(var(--accent-cyan-rgb, 16, 185, 129), 0.1);
+      box-shadow: 0 0 16px rgba(var(--accent-cyan-rgb, 16, 185, 129), 0.15);
     }
   }
 
@@ -122,20 +111,20 @@ $radius-btn: 8px;
       font-family: 'Inter', sans-serif;
       font-size: 0.9rem;
       font-weight: 500;
-      color: $text-primary;
+      color: var(--text-primary);
     }
 
     &-level {
       font-family: 'Space Grotesk', sans-serif;
       font-size: 0.8rem;
       font-weight: 600;
-      color: $accent-cyan;
+      color: var(--accent-cyan);
     }
 
     &-bar {
       width: 100%;
       height: 6px;
-      background: rgba($border-color, 0.6);
+      background: var(--border-color);
       border-radius: 3px;
       overflow: hidden;
       position: relative;
@@ -147,25 +136,25 @@ $radius-btn: 8px;
       position: relative;
       transition: width 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 
-      // High proficiency — cyan gradient
+      // High proficiency
       &.high {
-        background: linear-gradient(90deg, $accent-cyan, lighten($accent-cyan, 15%));
-        box-shadow: 0 0 10px rgba($accent-cyan, 0.4);
+        background: var(--accent-gradient);
+        box-shadow: 0 0 10px rgba(var(--accent-cyan-rgb, 16, 185, 129), 0.4);
       }
 
-      // Medium proficiency — amber gradient
+      // Medium proficiency
       &.medium {
-        background: linear-gradient(90deg, $accent-amber, lighten($accent-amber, 10%));
-        box-shadow: 0 0 10px rgba($accent-amber, 0.3);
+        background: var(--accent-gradient-warm);
+        box-shadow: 0 0 10px rgba(var(--accent-amber-rgb, 52, 211, 153), 0.3);
       }
 
-      // Lower proficiency — muted gradient
+      // Lower proficiency
       &.low {
         background: linear-gradient(90deg, #6366f1, #818cf8);
         box-shadow: 0 0 10px rgba(99, 102, 241, 0.3);
       }
 
-      // Animated shimmer on the bar
+      // Animated shimmer
       &::after {
         content: '';
         position: absolute;
@@ -190,13 +179,13 @@ $radius-btn: 8px;
   font-family: 'Space Grotesk', sans-serif;
   font-size: 2.5rem;
   font-weight: 700;
-  color: $text-primary;
+  color: var(--text-primary);
   margin: 0 0 0.75rem;
   letter-spacing: -0.02em;
 }
 
 .text-gradient {
-  background: linear-gradient(135deg, $accent-cyan, $accent-amber);
+  background: var(--accent-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -205,7 +194,7 @@ $radius-btn: 8px;
 .section-subtitle {
   font-family: 'Inter', sans-serif;
   font-size: 1.1rem;
-  color: $text-secondary;
+  color: var(--text-secondary);
   margin: 0;
 }
 
@@ -250,7 +239,7 @@ $radius-btn: 8px;
 
 @media (max-width: 480px) {
   .skills {
-    padding: 4rem 1rem;
+    padding: var(--section-padding);
 
     &__tabs {
       gap: 0.35rem;

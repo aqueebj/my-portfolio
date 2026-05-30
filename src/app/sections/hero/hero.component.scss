@@ -38,9 +38,10 @@
   60%                      { transform: translateY(4px); }
 }
 
-@keyframes scroll-wheel {
-  0%   { opacity: 1; transform: translateY(0); }
-  100% { opacity: 0; transform: translateY(8px); }
+@keyframes chevron-fade {
+  0% { opacity: 0; transform: translateY(-6px) rotate(45deg); }
+  50% { opacity: 1; transform: translateY(0) rotate(45deg); }
+  100% { opacity: 0; transform: translateY(6px) rotate(45deg); }
 }
 
 @keyframes wave-hand {
@@ -90,7 +91,7 @@
   inset: 0;
   background-image: radial-gradient(
     circle,
-    rgba(var(--accent-cyan-rgb, 0, 212, 255), 0.12) 1px,
+    rgba(var(--accent-cyan-rgb, 16, 185, 129), 0.2) 1px,
     transparent 1px
   );
   background-size: 40px 40px;
@@ -111,8 +112,8 @@
   border-radius: 50%;
   background: radial-gradient(
     circle,
-    rgba(var(--accent-cyan-rgb, 0, 212, 255), 0.06) 0%,
-    rgba(var(--accent-purple-rgb, 99, 102, 241), 0.03) 40%,
+    rgba(var(--accent-cyan-rgb, 16, 185, 129), 0.08) 0%,
+    rgba(var(--accent-amber-rgb, 52, 211, 153), 0.04) 40%,
     transparent 70%
   );
   pointer-events: none;
@@ -126,9 +127,10 @@
   z-index: 1;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 4rem;
+  justify-content: center;
+  gap: 8rem;
   max-width: var(--container-max, 1200px);
+  margin: 0 auto;
   width: 100%;
 }
 
@@ -147,8 +149,8 @@
   gap: 0.6rem;
   margin-bottom: 1rem;
   padding: 0.45rem 1.1rem;
-  background: var(--accent-gradient-subtle);
-  border: 1px solid var(--border-subtle);
+  background: rgba(var(--accent-cyan-rgb, 16, 185, 129), 0.1);
+  border: 1px solid var(--border-color);
   border-radius: var(--radius-full, 9999px);
   font-size: 0.95rem;
   color: var(--text-secondary);
@@ -349,8 +351,8 @@
   border-radius: 50%;
   background: radial-gradient(
     circle,
-    rgba(var(--accent-cyan-rgb, 0, 212, 255), 0.15) 0%,
-    rgba(var(--accent-purple-rgb, 99, 102, 241), 0.08) 50%,
+    rgba(var(--accent-cyan-rgb, 16, 185, 129), 0.2) 0%,
+    rgba(var(--accent-amber-rgb, 52, 211, 153), 0.1) 50%,
     transparent 70%
   );
   filter: blur(40px);
@@ -426,8 +428,8 @@
     height: 56px;
     font-size: 0.8rem;
     color: var(--accent-cyan);
-    background: rgba(var(--accent-cyan-rgb, 0, 212, 255), 0.1);
-    border: 1px solid rgba(var(--accent-cyan-rgb, 0, 212, 255), 0.2);
+    background: rgba(var(--accent-cyan-rgb, 16, 185, 129), 0.1);
+    border: 1px solid rgba(var(--accent-cyan-rgb, 16, 185, 129), 0.2);
     animation: float-1 6s ease-in-out infinite;
   }
 
@@ -438,8 +440,8 @@
     height: 50px;
     font-size: 0.85rem;
     color: var(--accent-amber);
-    background: rgba(var(--accent-amber-rgb, 255, 159, 67), 0.1);
-    border: 1px solid rgba(var(--accent-amber-rgb, 255, 159, 67), 0.2);
+    background: rgba(var(--accent-amber-rgb, 52, 211, 153), 0.1);
+    border: 1px solid rgba(var(--accent-amber-rgb, 52, 211, 153), 0.2);
     animation: float-2 7s ease-in-out infinite;
   }
 
@@ -450,9 +452,9 @@
     height: 48px;
     font-size: 0.9rem;
     font-weight: 800;
-    color: var(--accent-purple, #6366f1);
-    background: rgba(var(--accent-purple-rgb, 99, 102, 241), 0.1);
-    border: 1px solid rgba(var(--accent-purple-rgb, 99, 102, 241), 0.2);
+    color: var(--accent-cyan);
+    background: rgba(var(--accent-cyan-rgb, 16, 185, 129), 0.1);
+    border: 1px solid rgba(var(--accent-cyan-rgb, 16, 185, 129), 0.2);
     animation: float-3 5s ease-in-out infinite;
   }
 }
@@ -479,23 +481,25 @@
   }
 }
 
-.hero__scroll-mouse {
-  width: 22px;
-  height: 36px;
-  border: 2px solid currentColor;
-  border-radius: 12px;
-  position: relative;
+.hero__scroll-chevrons {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 4px;
 }
 
-.hero__scroll-wheel {
-  width: 3px;
-  height: 8px;
-  background: currentColor;
-  border-radius: 3px;
-  margin-top: 6px;
-  animation: scroll-wheel 1.5s ease-in-out infinite;
+.chevron {
+  width: 12px;
+  height: 12px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg);
+  animation: chevron-fade 1.5s infinite;
+  margin-top: -6px;
+  
+  &:nth-child(1) { animation-delay: 0s; }
+  &:nth-child(2) { animation-delay: 0.15s; }
+  &:nth-child(3) { animation-delay: 0.3s; }
 }
 
 .hero__scroll-text {
@@ -589,7 +593,7 @@
   }
 
   .hero__scroll-indicator {
-    bottom: 1rem;
+    display: none;
   }
 }
 

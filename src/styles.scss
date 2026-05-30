@@ -49,9 +49,8 @@ h1, h2, h3, h4, h5, h6, .hero__name, .section-title {
 /* Base styling for sections */
 section {
   padding: var(--section-padding);
-  max-width: 1200px;
-  margin: 0 auto;
   position: relative;
+  width: 100%;
 }
 
 /* Scrollbar */

@@ -20,7 +20,7 @@ export class AboutComponent {
       phase: 'Present',
       icon: '💻',
       description:
-        'Currently working as SDE 2 at Cropin Technology, Bangalore — an AI-driven agritech company. I architect and build enterprise Angular applications featuring interactive Leaflet maps for geospatial farm analytics, AI-powered chatbots using Google ADK, and rich data visualizations with Chart.js. Angular Material and TypeScript are my daily companions.',
+        'Currently working as a Senior Software Engineer at Cropin Technology, Bangalore — an AI-driven agritech company. I architect and build enterprise Angular applications featuring interactive Leaflet maps for geospatial farm analytics, AI-powered chatbots using Google ADK, and rich data visualizations with Chart.js. Angular Material and TypeScript are my daily companions.',
     },
     {
       phase: 'Future',

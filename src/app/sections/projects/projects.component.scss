@@ -17,8 +17,8 @@
     align-items: center;
     gap: var(--spacing-xl);
     position: relative;
-    opacity: 0;
-    transform: translateY(30px);
+    opacity: 1;
+    transform: translateY(0);
     transition: all var(--transition-slow);
 
     &.aos-animate {
@@ -92,7 +92,8 @@
     font-size: 8rem;
     font-weight: 700;
     font-family: 'Space Grotesk', sans-serif;
-    color: rgba(255, 255, 255, 0.03);
+    color: var(--text-primary);
+    opacity: 0.03;
     line-height: 1;
     pointer-events: none;
   }
@@ -149,7 +150,7 @@
     font-size: 0.8rem;
     padding: 4px 12px;
     border-radius: var(--radius-full);
-    background: rgba(0, 212, 255, 0.1);
+    background: rgba(var(--accent-cyan-rgb, 16, 185, 129), 0.1);
     color: var(--accent-cyan);
     font-family: 'JetBrains Mono', monospace;
   }
