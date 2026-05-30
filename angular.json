@@ -49,8 +49,7 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.svg",
-              "src/assets",
-              "src/CNAME"
+              "src/assets"
             ],
             "styles": [
               "node_modules/leaflet/dist/leaflet.css",
