@@ -1,5 +1,5 @@
-import { Component, OnInit, OnDestroy, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, OnInit, OnDestroy, inject, PLATFORM_ID } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { ThemeService } from '../../core/services/theme.service';
 import { ScrollService } from '../../core/services/scroll.service';
 
@@ -13,6 +13,7 @@ import { ScrollService } from '../../core/services/scroll.service';
 export class HeroComponent implements OnInit, OnDestroy {
   private readonly themeService = inject(ThemeService);
   private readonly scrollService = inject(ScrollService);
+  private readonly platformId = inject(PLATFORM_ID);
 
   readonly titles: string[] = [
     'Senior Software Engineer',
@@ -31,7 +32,21 @@ export class HeroComponent implements OnInit, OnDestroy {
   private charIndex = 0;
 
   ngOnInit(): void {
-    this.startTypewriter();
+    if (isPlatformBrowser(this.platformId)) {
+      // Start in a 'paused' state at the end of the first title, exactly matching the server render
+      this.currentTitleIndex = 0;
+      this.displayText = this.titles[0];
+      this.charIndex = this.displayText.length;
+      this.isTyping = false;
+      
+      this.pauseTimeout = setTimeout(() => {
+        this.isTyping = true;
+        this.typeBackward();
+      }, 2000);
+    } else {
+      // Server-side: Just render the first title statically
+      this.displayText = this.titles[0];
+    }
   }
 
   ngOnDestroy(): void {

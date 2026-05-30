@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, PLATFORM_ID, Inject, ViewEncapsulation } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
-import * as L from 'leaflet';
+import type * as L from 'leaflet';
 
 @Component({
   selector: 'app-map',
@@ -34,7 +34,13 @@ export class MapComponent implements OnInit, OnDestroy {
     this.map?.remove();
   }
 
-  private initMap() {
+  private async initMap() {
+    if (!this.isBrowser) return;
+    
+    // Dynamically import Leaflet only in the browser to prevent SSR 'window is not defined' error
+    const leafletModule = await import('leaflet');
+    const L = (leafletModule as any).default || leafletModule;
+
     // Basic setup
     this.map = L.map('portfolio-map', {
       zoomControl: false,
@@ -46,10 +52,10 @@ export class MapComponent implements OnInit, OnDestroy {
       attribution: '&copy; <a href="https://carto.com/">CARTO</a>'
     }).addTo(this.map);
 
-    this.addMarkers();
+    this.addMarkers(L);
   }
 
-  private addMarkers() {
+  private addMarkers(L: any) {
     if (!this.map) return;
 
     const createIcon = (color: string, label: string) => L.divIcon({
@@ -71,7 +77,7 @@ export class MapComponent implements OnInit, OnDestroy {
       .addTo(this.map);
 
     // Draw dashed line between them
-    const latlngs: L.LatLngExpression[] = [
+    const latlngs = [
       [this.locations.home.lat, this.locations.home.lng],
       [this.locations.work.lat, this.locations.work.lng]
     ];
